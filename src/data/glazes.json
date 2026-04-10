@@ -1,0 +1,13 @@
+[
+  { "code": "PC-17", "name": "Honey Flux",        "hex": "#C07838", "slug": "pc-17-honey-flux" },
+  { "code": "PC-20", "name": "Blue Rutile",        "hex": "#4E84B0", "slug": "pc-20-blue-rutile" },
+  { "code": "PC-23", "name": "Indigo Float",       "hex": "#2A4280", "slug": "pc-23-indigo-float" },
+  { "code": "PC-25", "name": "Textured Turquoise", "hex": "#257A6E", "slug": "pc-25-textured-turquoise" },
+  { "code": "PC-31", "name": "Oatmeal",            "hex": "#C0AE90", "slug": "pc-31-oatmeal" },
+  { "code": "PC-33", "name": "Iron Lustre",        "hex": "#7A5A3C", "slug": "pc-33-iron-lustre" },
+  { "code": "PC-42", "name": "Seaweed",            "hex": "#2C6038", "slug": "pc-42-seaweed" },
+  { "code": "PC-55", "name": "Chun Plum",          "hex": "#9A4A6C", "slug": "pc-55-chun-plum" },
+  { "code": "C-01",  "name": "Obsidian",           "hex": "#2E2C2C", "slug": "c-1-obsidian" },
+  { "code": "C-10",  "name": "Snow White",         "hex": "#DDD8CF", "slug": "c-10-snow" },
+  { "code": "C-49",  "name": "Rainforest Green",   "hex": "#3A7848", "slug": "c-49-rainforest" }
+]

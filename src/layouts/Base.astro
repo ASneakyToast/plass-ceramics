@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1916">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Glaze Studio">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <title>Glaze Studio</title>
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="app-header">
+      <div class="app-title">Glaze Studio</div>
+      <div class="app-sub">AMACO combinations for your cabinet</div>
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="tbtn on" data-t="combos">Combos</button>
+      <button class="tbtn" data-t="tests">My Tests</button>
+      <button class="tbtn" data-t="planner">Bowl Planner</button>
+      <button class="tbtn" data-t="shop">Shopping List</button>
+    </div>
+    <slot />
+  </div>
+</body>
+</html>

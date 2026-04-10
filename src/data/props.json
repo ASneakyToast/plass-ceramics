@@ -1,0 +1,13 @@
+{
+  "PC-17": { "fluid": 2, "celadon": false, "warn": "flux glaze — amplifies movement in the top coat" },
+  "PC-20": { "fluid": 3, "celadon": false, "warn": "very fluid — significant drip risk, needs maximum foot clearance" },
+  "PC-23": { "fluid": 2, "celadon": false, "warn": null },
+  "PC-25": { "fluid": 1, "celadon": false, "warn": null },
+  "PC-31": { "fluid": 1, "celadon": false, "warn": null },
+  "PC-33": { "fluid": 2, "celadon": false, "warn": null },
+  "PC-42": { "fluid": 2, "celadon": false, "warn": "moderately fluid, watch foot clearance" },
+  "PC-55": { "fluid": 1, "celadon": false, "warn": null },
+  "C-01":  { "fluid": 1, "celadon": true,  "warn": null },
+  "C-10":  { "fluid": 1, "celadon": true,  "warn": null },
+  "C-49":  { "fluid": 1, "celadon": true,  "warn": null }
+}

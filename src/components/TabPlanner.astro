@@ -1,0 +1,24 @@
+---
+import glazes from '../data/glazes.json';
+---
+
+<div id="tp-planner" class="tp">
+  <div class="tip">Pick any base and top coat from your 11 glazes for a step-by-step pasta bowl application plan — generated locally, no internet needed.</div>
+  <div class="prow">
+    <span class="plbl">Base</span>
+    <select id="pbase">
+      {glazes.map(g => (
+        <option value={g.code} selected={g.code === 'PC-55'}>{g.code} — {g.name}</option>
+      ))}
+    </select>
+    <span style="color:var(--text-3);font-size:15px">→</span>
+    <span class="plbl">Top coat</span>
+    <select id="ptop">
+      {glazes.map(g => (
+        <option value={g.code} selected={g.code === 'PC-20'}>{g.code} — {g.name}</option>
+      ))}
+    </select>
+    <button class="gbtn" id="gbtn">Generate plan</button>
+  </div>
+  <div class="pout" id="pout"><span style="color:var(--text-3)">Select a combination above, then click Generate plan.</span></div>
+</div>

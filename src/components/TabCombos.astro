@@ -1,0 +1,107 @@
+---
+import glazes from '../data/glazes.json';
+import combos from '../data/combos.json';
+
+const sections = [
+  { kind: 'official',  label: 'Layering (AMACO documented)' },
+  { kind: 'community', label: 'Community combinations' },
+  { kind: 'mix',       label: 'Celadon mixing' },
+];
+
+// Build a lookup for rendering glaze pills
+const G = Object.fromEntries(glazes.map(g => [g.code, g]));
+
+function dot(hex, size = 10) {
+  return `<span style="display:inline-block;width:${size}px;height:${size}px;border-radius:50%;background:${hex};flex-shrink:0;border:0.5px solid rgba(0,0,0,.12)"></span>`;
+}
+
+function amacoURL(base, top) {
+  const bg = G[base], tg = G[top];
+  if (!bg || !tg) return null;
+  return `https://amaco.com/resources/layering/${tg.slug}-over-${bg.slug}`;
+}
+
+function pinterestURL(base, top) {
+  const bg = G[base], tg = G[top];
+  const q = encodeURIComponent(`AMACO ${base} ${bg?.name ?? base} ${top} ${tg?.name ?? top} pottery glaze`);
+  return `https://www.pinterest.com/search/pins/?q=${q}`;
+}
+
+const kindLabels = {
+  official:  'AMACO documented',
+  community: 'community — test first',
+  mix:       'celadon mixing',
+};
+---
+
+<div id="tp-combos" class="tp on">
+  <div class="tip">Apply <strong>2 coats base + 2 coats top</strong> for PC over PC. For Celadon + PC, use <strong>3 coats each</strong>. Let each coat dry fully before the next.</div>
+
+  <!-- Filter chips -->
+  <div class="fb" id="fb">
+    <button class="chip on" data-f="all">All</button>
+    {glazes.map(g => (
+      <button class="chip" data-f={g.code} set:html={dot(g.hex, 8) + g.code} />
+    ))}
+  </div>
+
+  <div class="ct" id="ct">{combos.length} combinations</div>
+
+  <!-- Static cards with data-* attrs for JS filtering -->
+  <div id="secs">
+    {sections.map(({ kind, label }) => {
+      const items = combos.filter(c => c.kind === kind);
+      if (!items.length) return null;
+      return (
+        <div class="section-group" data-kind={kind}>
+          <div class="sh">{label}</div>
+          <div class="grid">
+            {items.map(item => {
+              const bg = G[item.base];
+              const tg = G[item.top];
+              const url = item.kind === 'official' ? amacoURL(item.base, item.top) : null;
+              const pinUrl = pinterestURL(item.base, item.top);
+              return (
+                <div
+                  class="card"
+                  data-base={item.base}
+                  data-top={item.top}
+                  data-kind={item.kind}
+                >
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                    <div class={`badge ${item.kind}`} style="margin:0">{kindLabels[item.kind]}</div>
+                    <div style="display:flex;gap:8px;align-items:center">
+                      {url && (
+                        <a href={url} target="_blank" rel="noopener" style="font-size:11px;color:var(--blue-txt);text-decoration:none;white-space:nowrap">AMACO tile →</a>
+                      )}
+                      <a href={pinUrl} target="_blank" rel="noopener" style="font-size:11px;color:#e60023;text-decoration:none;white-space:nowrap">Pinterest ↗</a>
+                    </div>
+                  </div>
+                  <div class="pair">
+                    <div class="gp">
+                      <Fragment set:html={dot(bg?.hex ?? '#999')} />
+                      <div>
+                        <div class="gcode">{item.base}</div>
+                        <div class="gnm">{bg?.name ?? item.base}</div>
+                      </div>
+                    </div>
+                    <div class="gsep">{item.kind === 'mix' ? '+' : '→'}</div>
+                    <div class="gp">
+                      <Fragment set:html={dot(tg?.hex ?? '#999')} />
+                      <div>
+                        <div class="gcode">{item.top}</div>
+                        <div class="gnm">{tg?.name ?? item.top}</div>
+                      </div>
+                    </div>
+                  </div>
+                  {item.kind !== 'mix' && <div class="note-s">base coat → top coat</div>}
+                  <div class="res">{item.description}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>

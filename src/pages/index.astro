@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import TabCombos  from '../components/TabCombos.astro';
+import TabTests   from '../components/TabTests.astro';
+import TabPlanner from '../components/TabPlanner.astro';
+import TabShop    from '../components/TabShop.astro';
+---
+
+<Base>
+  <TabCombos />
+  <TabTests />
+  <TabPlanner />
+  <TabShop />
+</Base>
+
+<script>
+  import '../scripts/tabs.js';
+</script>
